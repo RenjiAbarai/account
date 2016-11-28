@@ -1,5 +1,4 @@
-require('./assets/css/index.css');
-// import './assets/css/index.css'
+import './assets/css/index.css'
 import Vue from 'vue'
 import router from './routers'
 import VueBus from 'vue-bus'
