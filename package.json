@@ -39,6 +39,7 @@
     "url-loader": "^0.5.7",
     "vue-bus": "^0.3.0",
     "vue-loader": "^9.4.0",
+    "vue-resource": "^1.0.3",
     "vue-router": "^2.0.2",
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.13.2",

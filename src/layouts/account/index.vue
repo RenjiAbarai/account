@@ -1,6 +1,7 @@
 <template>
 	<div class="content">
-		account  index
+		<div>account  index</div>
+		<router-link to="/main/abc">abc</router-link>
 	</div>
 </template>
 
