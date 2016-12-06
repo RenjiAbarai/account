@@ -9,7 +9,7 @@
 	</div>
 </template>
 
-<script type="text/javascript">
+<script>
 
 import top from '../../components/header'
 import abc from '../../components/abc'

@@ -8,7 +8,7 @@
 	</div>
 </template>
 
-<script type="text/javascript">
+<script>
 
 import Vue from 'vue'
 import top from '../components/header'
