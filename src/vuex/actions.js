@@ -1,46 +1,53 @@
-import * as types from './mutation-types'
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-Vue.use(VueResource)
+import * as types from './types'
 
-const douban_api = "https://api.douban.com"
+import axios from 'axios';
+
+// 使用代理
+const HOST = '/api/';
 
 const _get = ({url, query}) => {
   let _url;
   if (query) {
-    _url = douban_api + url + '?' + query
+    _url = HOST + url + '?' + query
   } else {
-    _url = douban_api + url
+    _url = HOST + url
   }
-  return Vue.http.jsonp(_url)
-  // .then((req) => {
-  //
-  // })
-  // .catch((error) => {
-  //   Promise.reject(new Error(error))
-  // })
-}
+  return new Promise((resolve, reject)=> {
+    axios.get(_url)
+      .then(response => {
+        resolve(response.data);
+      })
+  });
+};
+
+// const _get = ({url, query}) => {
+//   let _url;
+//   if (query) {
+//     _url = HOST + url + '?' + query
+//   } else {
+//     _url = HOST + url
+//   }
+//   return Vue.http.get(_url);
+// };
+
 
 const _post = (url, params) => {
-  return Vue.http.jsonp(url, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-type': 'application/json'
-    },
-    params: params
-  })
-}
+  return new Promise((resolve, reject)=> {
+    axios.post(url, params)
+      .then(response => {
+        resolve(response.data);
+      })
+  });
+};
 /**
  * top250
  */
 export const fetchMovieTop = ({commit}, {start, count}) => {
-  const url = '/v2/movie/top250'
+  const url = 'movie/top250'
   const query = 'start=' + start + '&count=' + count;
-  return _get({url, query}).then((res) => {
+  return _get({url, query}).then((data) => {
     //判断数据是否获取正确 if(res.success)
-    console.log(111)
-    return commit(types.DOUBAN_BOOK, res.body.subjects)
+    return commit(types.DOUBAN_BOOK, data.subjects)
   })
 }
 
@@ -50,16 +57,15 @@ export const fetchMovieData = ({commit}, {progress, refresh, start, count}) => {
   commit('updateLoadingState', false)
   commit('updateBusyState', true)
 
-  const url = '/v2/movie/top250'
+  const url = 'movie/top250'
   const query = 'start=' + start + '&count=' + count
-  return _get({url, query}).then((res) => {
-    let json = res.body.subjects;
+  return _get({url, query}).then((data) => {
     commit('updateLoadingState', true)
     commit('updateBusyState', false)
     if (refresh === true) {
-      commit('refreshData', json)
+      commit('refreshData', data)
     } else {
-      commit('addData', json)
+      commit('addData', data)
     }
     progress.$Progress.finish()
 

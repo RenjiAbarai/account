@@ -1,3 +1,3 @@
-# account
+# 简易豆瓣
 
-> this is statements
+> this is douban

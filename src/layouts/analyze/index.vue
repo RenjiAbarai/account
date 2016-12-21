@@ -17,13 +17,6 @@ import abc from '../../components/abc'
 export default {
 	components:{
 		top,abc
-	},
-	mounted() {
-		this.$bus.$on('john', name => console.log(name))
-		this.$bus.$emit('john','john')
-	},
-	beforeDestroy(){
-		this.$bus.$off('john')
 	}
 }
 

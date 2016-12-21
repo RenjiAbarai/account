@@ -54,7 +54,6 @@ import { mapActions, mapGetters } from 'vuex'
 <style lang="scss" scoped>
   .next {
     display: block;
-    width: 100%;
     background-color: #212121;
     color: #fff;
     font-weight: bold;

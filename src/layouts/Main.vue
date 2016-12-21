@@ -5,7 +5,7 @@
 	</div>
 </template>
 
-<script type="text/javascript">
+<script>
 
 import navigation from '../components/footer'
 // const navigation = resolve => require(['../components/footer'], resolve)
@@ -14,7 +14,7 @@ export default {
 	data(){
 		return {
 			index: ''
-		} 
+		}
 	},
 	components:{
 		navigation
@@ -31,13 +31,13 @@ export default {
 	methods:{
 		change(){
 			switch(this.$route.path){
-				case "/main/account": 
+				case "/main/account":
 					this.$data.index = 1;break;
-				case "/main/analyze": 
+				case "/main/analyze":
 					this.$data.index = 2;break;
-				case "/main/welfare": 
+				case "/main/welfare":
 					this.$data.index = 3;break;
-				default: 
+				default:
 					this.$data.index = 1;break;
 			}
 		}

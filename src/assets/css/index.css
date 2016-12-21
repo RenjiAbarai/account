@@ -4,22 +4,24 @@ body{
 html, body{
 	height: 100%; width: 100%;
 }
-/*.header, .footer{
-	position: absolute; left: 0; right: 0;
-}
-.header{
-	height: 50px;
-	top: 0;
-}
-.footer{
-	height: 50px;
-	bottom: 0;
-}*/
+/*.header, .footer{*/
+	/*position: absolute; left: 0; right: 0;*/
+/*}*/
+/*.header{*/
+	/*height: 50px;*/
+	/*top: 0;*/
+/*}*/
+/*.footer{*/
+	/*height: 50px;*/
+	/*bottom: 0;*/
+/*}*/
 .content{
 	position: absolute;
 	top: 0;
 	bottom: 52px;
-	overflow: auto;
+  /*overflow-y: auto;*/
+  /*overflow-x:hidden;*/
+  overflow: auto;
 	width: 100%;
 }
 .content-top{
