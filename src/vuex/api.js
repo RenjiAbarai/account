@@ -2,7 +2,8 @@
 import axios from 'axios';
 
 // 使用代理
-const HOST = '/api/';
+const HOST = 'http://api.douban.com/v2/';
+// const HOST = '/api/';
 
 const _get = (url) => {
   return new Promise((resolve, reject)=> {

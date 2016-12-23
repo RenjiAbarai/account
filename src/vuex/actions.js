@@ -2,7 +2,11 @@ import * as types from './types'
 
 import axios from 'axios';
 
+import resource from 'vue-resource';
+import Vue from 'vue';
+Vue.use(resource);
 // 使用代理
+// const HOST = 'http://api.douban.com/v2/';
 const HOST = '/api/';
 
 const _get = ({url, query}) => {
@@ -13,22 +17,13 @@ const _get = ({url, query}) => {
     _url = HOST + url
   }
   return new Promise((resolve, reject)=> {
-    axios.get(_url)
+    // axios.get(_url)
+    Vue.http.jsonp(_url)
       .then(response => {
         resolve(response.data);
       })
   });
 };
-
-// const _get = ({url, query}) => {
-//   let _url;
-//   if (query) {
-//     _url = HOST + url + '?' + query
-//   } else {
-//     _url = HOST + url
-//   }
-//   return Vue.http.get(_url);
-// };
 
 
 const _post = (url, params) => {
